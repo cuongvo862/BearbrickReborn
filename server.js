@@ -18,7 +18,6 @@ mongoose.connect('mongodb+srv://cuongvo862:123@cluster0.qkni3.mongodb.net/Bearbr
     useCreateIndex: true
 });
 
-
 app.use(express.static(path.join(__dirname,'public')));
 
 //set template engine
@@ -36,4 +35,4 @@ app.get('/', async (request, response) => {
 app.use('/blogs', blogRouter);
 
 //listen PORT
-app.listen(process.env.port || 8080);
+app.listen(process.env.PORT || 2);
