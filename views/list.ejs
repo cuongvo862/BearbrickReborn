@@ -45,11 +45,12 @@
 
     <div class="container-sm mt-4">
 
-        <table class="table">
+        <table class="table table-success table-striped">
             <thead>
                 <tr>
                     <th scope="col">Product</th>
                     <th scope="col">Price</th>
+                    <th scope="col">Condition</th>
                     <th scope="col">Date update</th>
                     <th scope="col">Selection</th>
                 </tr>
@@ -64,13 +65,16 @@
                             <%= blog.price %>
                         </td>
                         <td>
+                            <%= blog.description %>
+                        </td>
+                        <td>
                             <%= blog.timeCreated %>
                         </td>
                         <td>
                             <a href="edit/<%= blog.id %>"><button type="button"
-                                    class="btn btn-primary">Update</button></a>
+                                    class="btn btn-light">Update</button></a>
                             <form action="/blogs/<%= blog.id %>?_method=DELETE" method="POST">
-                                <button type="submit" class="btn btn-warning">Delete</button>
+                                <button type="submit" class="btn btn-info">Delete</button>
                             </form>
 
                         </td>

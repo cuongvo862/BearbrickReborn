@@ -26,6 +26,8 @@ const upload = multer({
 });
 
 
+
+
 router.get('/news', (request, response) => {
     response.render('new');
 });
@@ -42,16 +44,9 @@ router.get('/list', async (request, response) => {
     response.render('list', { blogs: blogs });
 });
 
-router.get('/:slug', async (request, response) => {
-    let blog = await Blog.findOne({ slug: request.params.slug });
 
-    if (blog) {
-        response.render('show', { blog: blog });
-    }
-    else {
-        response.redirect('/');
-    }
-});
+
+
 
 
 //new post
@@ -100,6 +95,31 @@ router.put('/:id', async (request, response) => {
 router.delete('/:id', async (request, response) => {
     await Blog.findByIdAndDelete(request.params.id);
     response.redirect('/');
+});
+
+router.get('/search', async (req, res) => {
+    var q = req.query.q;
+
+    let Item = await Blog.find().sort({ timeCreated: 'desc' })
+
+    var blogs = Item.filter((item) => {
+        return item.title.toLowerCase().indexOf(q.toLowerCase()) !== -1;
+    });
+
+    res.render('index', { blogs: blogs });
+    console.log(req.query);
+});
+
+
+router.get('/:slug', async (request, response) => {
+    let blog = await Blog.findOne({ slug: request.params.slug });
+
+    if (blog) {
+        response.render('show', { blog: blog });
+    }
+    else {
+        response.redirect('/');
+    }
 });
 
 

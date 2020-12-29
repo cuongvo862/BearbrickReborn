@@ -27,13 +27,8 @@
             </div>
 
             <div class="form-group">
-                <label for="description">Description</label>
-                <textarea class="form-control" name="description" rows="3"><%= blog.description %></textarea>
-            </div>
-
-            <div class="form-group">
-                <label for="exampleFormControlFile1">Example file input</label>
-                <input type="file" class="form-control-file" id="exampleFormControlFile1">
+                <label for="description">Condition</label>
+                <input type="text" class="form-control" name="description" value="<%= blog.description %>">
             </div>
 
             <a href="/" class="btn btn-warning">Cancel</a>
