@@ -12,7 +12,7 @@ const blogSchema = new mongoose.Schema({
         type: String,
         required: true,
     },
-    description: {
+    condition: {
         type: String,
     },
     timeCreated: {

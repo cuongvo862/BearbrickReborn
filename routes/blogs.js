@@ -16,16 +16,12 @@ const storage = multer.diskStorage({
 });
 
 //upload parameters for multer
-
-
 const upload = multer({
     storage: storage,
     limits: {
         fileSize: 1024 * 1024 * 3,
     },
 });
-
-
 
 
 router.get('/news', (request, response) => {
@@ -45,10 +41,6 @@ router.get('/list', async (request, response) => {
 });
 
 
-
-
-
-
 //new post
 router.post('/', upload.single('image') ,async (request, response) => {
 
@@ -56,7 +48,7 @@ router.post('/', upload.single('image') ,async (request, response) => {
     let blog = new Blog({
         title: request.body.title,
         price: request.body.price,
-        description: request.body.description,
+        condition: request.body.condition,
         img:request.file.filename,
     });
 
@@ -81,7 +73,7 @@ router.put('/:id', async (request, response) => {
     let blog = request.blog
     blog.title = request.body.title
     blog.price = request.body.price
-    blog.description = request.body.description
+    blog.condition = request.body.condition
 
     try {
         blog = await blog.save();
@@ -97,6 +89,7 @@ router.delete('/:id', async (request, response) => {
     response.redirect('/');
 });
 
+//search item
 router.get('/search', async (req, res) => {
     var q = req.query.q;
 
