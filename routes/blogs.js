@@ -89,20 +89,6 @@ router.delete('/:id', async (request, response) => {
     response.redirect('/');
 });
 
-//search item
-router.get('/search', async (req, res) => {
-    var q = req.query.q;
-
-    let Item = await Blog.find().sort({ timeCreated: 'desc' })
-
-    var blogs = Item.filter((item) => {
-        return item.title.toLowerCase().indexOf(q.toLowerCase()) !== -1;
-    });
-
-    res.render('index', { blogs: blogs });
-    console.log(req.query);
-});
-
 
 router.get('/:slug', async (request, response) => {
     let blog = await Blog.findOne({ slug: request.params.slug });
