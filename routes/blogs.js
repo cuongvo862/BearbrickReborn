@@ -67,21 +67,6 @@ router.get('/edit/:id', async (request, response) => {
     response.render('edit', { blog: blog })
 });
 
-//router update
-router.put('/:id', async (request, response) => {
-    request.blog = await Blog.findById(request.params.id)
-    let blog = request.blog
-    blog.title = request.body.title
-    blog.price = request.body.price
-    blog.condition = request.body.condition
-
-    try {
-        blog = await blog.save();
-        response.redirect(`/blogs/${blog.slug}`);
-    } catch (error) {
-        console.log(error)
-    }
-});
 
 //router delete
 router.delete('/:id', async (request, response) => {

@@ -70,8 +70,6 @@
                             <%= blog.timeCreated %>
                         </td>
                         <td>
-                            <a href="edit/<%= blog.id %>"><button type="button"
-                                    class="btn btn-light">Update</button></a>
                             <form action="/blogs/<%= blog.id %>?_method=DELETE" method="POST">
                                 <button type="submit" class="btn btn-info">Delete</button>
                             </form>
