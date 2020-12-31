@@ -61,13 +61,6 @@ router.post('/', upload.single('image') ,async (request, response) => {
 });
 
 
-
-router.get('/edit/:id', async (request, response) => {
-    let blog = await Blog.findById(request.params.id);
-    response.render('edit', { blog: blog })
-});
-
-
 //router delete
 router.delete('/:id', async (request, response) => {
     await Blog.findByIdAndDelete(request.params.id);
