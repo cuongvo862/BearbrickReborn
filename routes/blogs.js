@@ -43,7 +43,6 @@ router.get('/list', async (request, response) => {
 
 //new post
 router.post('/', upload.single('image') ,async (request, response) => {
-
     console.log(request.file);
     let blog = new Blog({
         title: request.body.title,
